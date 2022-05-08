@@ -40,6 +40,27 @@ joined by a delimiter such as underscore (“_”) or hyphen (“-”).
 1. The name of the development directory that immediately encloses `README.md`, etc.
     * `python-meta-names-project-package-dev-directory`
 
+```
+(venv) …-dev-directory % tree -a
+.
+├── .gitignore
+├── LICENSE
+├── MANIFEST.in
+├── README.md
+├── pyproject.toml
+├── setup.cfg
+├── src
+│   ├── .DS_Store
+│   ├── module_bundle_package
+│   │   ├── __init__.py
+│   │   ├── __main__.py
+│   │   └── sole_module.py
+│   └── sample_data
+│       ├── sample_data_file_1.txt
+│       └── sample_data_file_2.txt
+└── tests
+```
+
 # Conclusions
 * For everthing `pip` related, the important name is the hyphen-normalized form of the developer-specified project name
 in the `name` field in `setup.cfg` or `setup.py`.
