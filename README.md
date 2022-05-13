@@ -9,8 +9,9 @@ There are at least the following uses of names that refer to the project, “pac
 1. The name of the “import package” (i.e., standard Python package, here a directory that contains a `__init__.py` file) that immediately encloses the outermost module(s)
 1. The name string by which a module is `import`ed by a script outside the package
 1. The name by which the import package is executed when using a `python -m something` command.
-1. The name of the GitHub repository
-1. The name of the development directory (aka project directory) that immediately encloses `README.md`, `setup.cfg`, etc.
+1. The name(s) referenced to execute a module directly
+3. The name of the GitHub repository
+4. The name of the development directory (aka project directory) that immediately encloses `README.md`, `setup.cfg`, etc.
 
 All of these names are independently specified by the developer. However, in many projects the developer sets all of 
 these names equal to a common string. It is then less than clear which name specification is being referenced when; for
@@ -35,10 +36,14 @@ joined by a delimiter such as underscore (“_”) or hyphen (“-”).
     * `module_bundle_package`
 1. The name string by which a module is `import`ed by a script outside the package
     * `import module_bundle_package`
+    * `from module_bundle_package import sole_module`
+    * `sole_module.print_greeting("Col. CLI")`
 1. The name by which the import package is executed when using a `python -m something` command.
     * `python -m module_bundle_package`
-1. The name of the GitHub repository
-1. The name of the development directory that immediately encloses `README.md`, etc.
+1. The name(s) referenced to execute a module directly
+   * `python src/module_bundle_package/sole_module.py`
+3. The name of the GitHub repository
+4. The name of the development directory that immediately encloses `README.md`, etc.
     * `python-meta-names-project-package-dev-directory`
 
 ```
