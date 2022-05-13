@@ -2,19 +2,19 @@
 
 Meta-python exercise to tease out the distinctions between the various uses of names for a project, package, and module.
 # Introduction
-There are at least the following uses of names that refer to the project, package, and/or module:
-1. The developer-specified project name in the `name` field in `setup.cfg` or `setup.py`.
+There are at least the following uses of names that refer to the project, “package,” and/or module:
+1. The developer-specified project name in the `name` field in `setup.cfg` or `setup.py`
 1. The project name on PyPI
-1. The name used in a `pip install something` command to install the distribution-“package” created by the `build` command.
-1. The name of the module-bundle “package” that immediately encloses the outermost module(s)
+1. The name used in a `pip install something` command to install the “distribution package” (e.g., `.whl` wheel file or source-archive file) created by the `build` command
+1. The name of the “import package” (i.e., standard Python package, here a directory that contains a `__init__.py` file) that immediately encloses the outermost module(s)
 1. The name string by which a module is `import`ed by a script outside the package
-1. The name by which the “package” is executed when using a `python -m something` command.
+1. The name by which the import package is executed when using a `python -m something` command.
 1. The name of the GitHub repository
-1. The name of the development directory that immediately encloses `README.md`, etc.
+1. The name of the development directory (aka project directory) that immediately encloses `README.md`, `setup.cfg`, etc.
 
 All of these names are independently specified by the developer. However, in many projects the developer sets all of 
-these names equal to a common string. It is then less than clear which name specification is being referenced when, for
-example, `pip install something` is executed or, instead, `python -m something` or `import something`.
+these names equal to a common string. It is then less than clear which name specification is being referenced when; for
+example, in `pip install something`, `python -m something`, or `import something`.
 
 This project aims to address this lack of clarity by setting each of these names to a unique string in order to trace
 back which specification is being referenced in each command.
@@ -25,16 +25,17 @@ joined by a delimiter such as underscore (“_”) or hyphen (“-”).
 # Results
 1. The developer-specified project name in the `name` field in `setup.cfg` or `setup.py`.
     * `name = meta-names-project_package`
+    * This name was deliberately chosen to have two different delimiters (viz., two hyphens and an underscore)
 1. The project name on PyPI
     * `meta-names-project-package`
     * This is the hyphen-normalized version of the developer-specified project name in the `name` field in `setup.cfg`
-1. The name used in a `pip install something` command to install the distribution-“package” created by the `build` command.
+1. The name used in a `pip install something` command to install the “distribution package” created by the `build` command.
     * This scenario is distinguished from installing the package locally with `% pip install -e .`.
 1. The name of the module-bundle “package” that immediately encloses the outermost module(s)
     * `module_bundle_package`
 1. The name string by which a module is `import`ed by a script outside the package
     * `import module_bundle_package`
-1. The name by which the “package” is executed when using a `python -m something` command.
+1. The name by which the import package is executed when using a `python -m something` command.
     * `python -m module_bundle_package`
 1. The name of the GitHub repository
 1. The name of the development directory that immediately encloses `README.md`, etc.
